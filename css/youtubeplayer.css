@@ -1,0 +1,63 @@
+/* line 1, ../sass/youtubeplayer.sass */
+.flashContainer {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 6, ../sass/youtubeplayer.sass */
+.progressBar {
+  display: none;
+  position: absolute;
+  width: auto;
+  height: 8px;
+  left: 20px;
+  right: 105px;
+  bottom: 20px;
+  background-color: #141414;
+  overflow: hidden;
+  cursor: pointer;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+/* line 20, ../sass/youtubeplayer.sass */
+.progressBar .elapsed {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: #1fa2f6;
+  border-right: 1px solid #49aff0;
+}
+
+/* line 27, ../sass/youtubeplayer.sass */
+.controlDiv {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  margin: -60px 0 0 -60px;
+}
+/* line 35, ../sass/youtubeplayer.sass */
+.controlDiv.play {
+  background: url("../images/play.png") no-repeat center center;
+}
+/* line 37, ../sass/youtubeplayer.sass */
+.controlDiv.replay {
+  background: url("../images/replay.png") no-repeat center center;
+}
+/* line 39, ../sass/youtubeplayer.sass */
+.controlDiv.pause {
+  background: url("../images/pause.png") no-repeat -99999px;
+}
+
+/* line 43, ../sass/youtubeplayer.sass */
+.flashContainer:hover .controlDiv.pause {
+  background-position: center center;
+}
+/* line 45, ../sass/youtubeplayer.sass */
+.flashContainer.playing:hover .progressBar {
+  display: block;
+}

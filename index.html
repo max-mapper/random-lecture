@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Lecture</title>
+  <link href="css/youtubeplayer.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+<body class="bp">
+  <div id="container">
+    <div id="header">
+      <h1>Random Lecture!</h1>
+      <div id="loading" style="display:none"><img src="images/loader.gif" alt="loading" /></div>
+    </div>
+    <div id="main">
+
+    </div>
+    <div id="player"></div>
+    <div id="footer">get the source on <a href="http://github.com/maxogden/randomlecture">github</a></div>
+  </div>
+  <div id="templates" style="display:none;">
+    <div class="lecture-index">
+      <div class="lecture"></div>
+    </div>
+    <script id="lecture-template" type="text/mustache" data-engine="mustache">
+      <a href='{{link}}' class='youtube-link'><h2>{{title}}</h2></a>
+    </script>
+  </div>
+  <script src="js/default.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
