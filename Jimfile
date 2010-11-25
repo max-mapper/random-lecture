@@ -13,6 +13,7 @@ sammy.json 0.6.1
 sammy.storage 0.6.1
 sammy.nested_params 0.6.1
 sammy.mustache 0.6.1
+mustache 0.3.1
 js/youtubeembedquery
 js/swfobject
 js/sammy.couch

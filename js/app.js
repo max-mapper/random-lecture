@@ -1,4 +1,8 @@
 (function($) {
+  
+  if (navigator.userAgent.match(/iPad/i) != null) {
+    $('#header').append("<h3>iPads don't play many YouTube videos when they're embedded in a page. Try clicking the title to play the lecture in the native YouTube app</h3>");
+  }
 
   var app = $.sammy('#container', function() {
     this.use('JSON')
@@ -23,12 +27,12 @@
             startkey: Math.random(),
             limit: 1
           })
-          .renderEach($('#lecture-template'))
-          .appendTo('#main .lecture')
-          .then(hideLoading)
-          .then(function(){
-            $('#player').youTubeEmbed($('.youtube-link').attr('href'));
+          .then(function(data) {
+            data = data[0];
+            data['id'] = data.link.split('v=')[1];
+            $('#main .lecture').html(Mustache.to_html($('#lecture-template').text(), data));
           })
+          .then(hideLoading)
     });
 
   });
