@@ -1,2 +1,3 @@
 .couchapprc
 .sass-cache*
+.DS_Store

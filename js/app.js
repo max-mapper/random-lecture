@@ -18,21 +18,40 @@
     var hideLoading = function() {
       $('#loading').hide();
     };
+    
+    lectureData = {}
+    var parseVideo = function(data) {
+      lectureData = data[0];
+      lectureData['id'] = lectureData.link.split('v=')[1];
+    }  
+    
+    this.get('#/:lecture', function(ctx) {
+      showLoading();
+      var queryType, options;
+      if (ctx.params['lecture'] == "random") {
+        queryType = 'random';
+        options = {
+          startkey: Math.random(),
+          limit: 1
+        }
+      } else {
+        queryType = 'video';
+        options = {
+          key: ctx.params['lecture']
+        }
+      }
+      ctx.load($('#templates .lecture-index'))
+        .replace('#main')
+        .send(Lecture.viewDocs, queryType, options)
+        .then(parseVideo)
+        .then(hideLoading)
+        .then(function(){
+          $('#main .lecture').html(Mustache.to_html($('#lecture-template').text(), lectureData));        
+        })
+    })
 
     this.get('#/', function(ctx) {
-      showLoading();
-      this.load($('#templates .lecture-index'))
-          .replace('#main')
-          .send(Lecture.viewDocs, 'random', {
-            startkey: Math.random(),
-            limit: 1
-          })
-          .then(function(data) {
-            data = data[0];
-            data['id'] = data.link.split('v=')[1];
-            $('#main .lecture').html(Mustache.to_html($('#lecture-template').text(), data));
-          })
-          .then(hideLoading)
+      ctx.redirect('#', 'random');
     });
 
   });
